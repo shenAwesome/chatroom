@@ -1,0 +1,84 @@
+.cursorMove{cursor:move}
+*,*:before,*:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;-o-user-select:none;user-select:none}
+body{font:12px Helvetica,Arial,sans-serif;background-color:#f0f8ff;padding:0;margin:0}
+.Component{position:absolute}
+.Container{overflow:hidden}
+.Panel{border:1px solid transparent;position:absolute;overflow:hidden;cursor:default}
+.Window{z-index:1000;border:1px solid #808080;-webkit-box-shadow:0 0 5px rgba(58,51,46,0.5);-moz-box-shadow:0 0 5px rgba(58,51,46,0.5);-ms-box-shadow:0 0 5px rgba(58,51,46,0.5);-o-box-shadow:0 0 5px rgba(58,51,46,0.5);box-shadow:0 0 5px rgba(58,51,46,0.5);overflow:visible;}
+.Window >.head{background-color:#f0f0f0;border:none}
+.Window >.foot{background-color:#fff;border:none}
+.Window >.body{background-color:#fff;border:none}
+.Window>.head:active{background-color:#e0e0e0}
+.Window>.head>button{background-color:#808080;display:none}
+.Window>.head:hover>button{display:block}
+.Window>.head>.Space{line-height:25px;padding-left:5px}
+.resizing>.head>button{display:none !important}
+.Desktop{border:none;}
+.Desktop > .Panel{background-color:#fff;border:0;overflow:visible}
+.Desktop div.body{background-color:#fff;-webkit-transition:none;-moz-transition:none;-ms-transition:none;-o-transition:none;transition:none}
+.Desktop > div.west{border-right:3px solid transparent}
+.Desktop > div.east{border-left:3px solid transparent}
+.resizing{opacity:.8;}
+.resizing .head{cursor:move !important}
+.dragging *{-webkit-transition:none !important;-moz-transition:none !important;-ms-transition:none !important;-o-transition:none !important;transition:none !important}
+.Resizer{overflow:visible;}
+.Resizer .handle{height:100%;width:100%;background-color:#f00;position:absolute;z-index:100;opacity:0}
+.Resizer .head{height:25px;left:0;top:0;cursor:default}
+.Resizer .left{width:10px;cursor:w-resize;left:-5px;top:0}
+.Resizer .left_top{width:15px;height:15px;left:-5px;top:-5px;cursor:nw-resize}
+.Resizer .top{height:10px;left:0;top:-5px;cursor:n-resize}
+.Resizer .top_right{width:15px;height:15px;right:-5px;top:-5px;cursor:ne-resize}
+.Resizer .right{right:-5px;top:0;width:10px;cursor:e-resize}
+.Resizer .right_bottom{width:15px;height:15px;bottom:-5px;right:-5px;cursor:se-resize}
+.Resizer .bottom{left:0;bottom:-5px;height:10px;cursor:s-resize}
+.Resizer .bottom_left{width:15px;height:15px;left:-5px;bottom:-5px;cursor:sw-resize}
+.ContextMenu{z-index:1000;border:1px solid #808080;background-color:#f8f8f8;-webkit-box-shadow:1px 1px 2px rgba(58,51,46,0.5);-moz-box-shadow:1px 1px 2px rgba(58,51,46,0.5);-ms-box-shadow:1px 1px 2px rgba(58,51,46,0.5);-o-box-shadow:1px 1px 2px rgba(58,51,46,0.5);box-shadow:1px 1px 2px rgba(58,51,46,0.5);padding:4px;}
+.ContextMenu >*{padding:2px 6px;cursor:default}
+.ContextMenu >*:hover{color:#fff;background-color:#1ba1e2}
+.Menu{z-index:1000;font-size:12px;background-color:#f0f0f0;}
+.Menu > .btn{padding:2px 5px;cursor:pointer;float:left;position:relative;}
+.Menu > .btn > div{white-space:nowrap;padding:4px;border:1px solid #808080;display:none;position:absolute;left:0;top:18px;background-color:#f8f8f8;-webkit-box-shadow:1px 1px 2px rgba(58,51,46,0.5);-moz-box-shadow:1px 1px 2px rgba(58,51,46,0.5);-ms-box-shadow:1px 1px 2px rgba(58,51,46,0.5);-o-box-shadow:1px 1px 2px rgba(58,51,46,0.5);box-shadow:1px 1px 2px rgba(58,51,46,0.5);}
+.Menu > .btn > div div{padding:4px 8px;min-width:60px;color:#000}
+.Menu > .btn > div div:hover{color:#fff;background-color:#1ba1e2}
+.Menu > .btn:hover{color:#fff;background-color:#1ba1e2;}
+.Menu > .btn:hover > div{display:block}
+.ToolBar{background-color:#f8f8f8}
+.ToolPanel > .Button,.Button{cursor:pointer;border:0;background-repeat:no-repeat;text-align:left;background-color:transparent;outline:none}
+.Button:hover{outline:1px solid #808080;color:#fff;background-color:#1ba1e2}
+.Button:active,.ButtonActive{border-top:1px solid #1ba1e2;border-left:1px solid #1ba1e2}
+.ButtonLeft{background-image:none !important;}
+.ButtonLeft div{-webkit-transform:rotate(-90deg) translate(-12px,-2px);-moz-transform:rotate(-90deg) translate(-12px,-2px);-ms-transform:rotate(-90deg) translate(-12px,-2px);-o-transform:rotate(-90deg) translate(-12px,-2px);transform:rotate(-90deg) translate(-12px,-2px)}
+.ButtonLeft img{position:absolute;bottom:2px;left:0;width:20px;height:20px}
+.ButtonRight{background-image:none !important;}
+.ButtonRight div{-webkit-transform:rotate(90deg) translate(-16px,0);-moz-transform:rotate(90deg) translate(-16px,0);-ms-transform:rotate(90deg) translate(-16px,0);-o-transform:rotate(90deg) translate(-16px,0);transform:rotate(90deg) translate(-16px,0)}
+.ButtonRight img{position:absolute;top:2px;left:0;width:20px;height:20px}
+.Panel,.SidePanel{-webkit-transition:left .2s,width .2s,top .2s,height .2s;-moz-transition:left .2s,width .2s,top .2s,height .2s;-ms-transition:left .2s,width .2s,top .2s,height .2s;-o-transition:left .2s,width .2s,top .2s,height .2s;transition:left .2s,width .2s,top .2s,height .2s}
+.SidePanel{overflow:hidden;border:1px solid #808080;}
+.SidePanel button{outline:none;background-color:transparent;color:#808080;border:none}
+.SidePanel button:hover{color:#000}
+.SidePanel button:active{color:#808080}
+.SidePanel button.ButtonActive{border:none;background-color:#fff;color:#000;-webkit-box-shadow:1px 1px 1px rgba(58,51,46,0.5);-moz-box-shadow:1px 1px 1px rgba(58,51,46,0.5);-ms-box-shadow:1px 1px 1px rgba(58,51,46,0.5);-o-box-shadow:1px 1px 1px rgba(58,51,46,0.5);box-shadow:1px 1px 1px rgba(58,51,46,0.5)}
+.SidePanel > .btns{background-color:#d0d0d0;z-index:200}
+.SidePanel > .body{background-color:transparent}
+.SidePanel > .foot{background-color:transparent;border-top:1px solid #808080}
+.TabPanel >.head{overflow:hidden;}
+.TabPanel >.head >.btns{overflow:visible;border-bottom:1px solid #808080 !important}
+.TabPanel >.head >.Space{border-bottom:1px solid #808080 !important}
+.TabPanel div.body{border:1px solid #808080;border-top:none;background-color:#f8f8f8}
+.TabPanel button.Tab{border:1px solid #d0d0d0;border-bottom:none;outline:none;background-color:panelColor3;text-align:left;overflow:hidden}
+.TabPanel button.ButtonActive{padding-bottom:5px;background-color:#f8f8f8;border:1px solid #808080;border-top-color:#1ba1e2;-webkit-box-shadow:1px 1px 1px rgba(58,51,46,0.5);-moz-box-shadow:1px 1px 1px rgba(58,51,46,0.5);-ms-box-shadow:1px 1px 1px rgba(58,51,46,0.5);-o-box-shadow:1px 1px 1px rgba(58,51,46,0.5);box-shadow:1px 1px 1px rgba(58,51,46,0.5);z-index:100;color:#000;cursor:default}
+.TabPanel .Tab>.closeBtn{width:16px;height:16px;position:absolute;top:2px;right:2px;background-color:#808080;display:none}
+.TabPanel .Tab:hover>.closeBtn{display:block}
+.TabPanel .Tab>.closeBtn:hover{background-color:#00f}
+.Tree{overflow:auto;}
+.Tree .node .head{padding:2px 0;height:20px;overflow:hidden;white-space:nowrap}
+.Tree .node .head>*{display:inline-block;height:16px;vertical-align:top}
+.Tree .node .switcher{width:10px;text-align:right;cursor:pointer}
+.Tree .node .icon{width:16px;background-image:url("img/icon16/file.png")}
+.Tree .node label{cursor:pointer;padding:2px}
+.Tree .highlighted>.head{background-color:#1ba1e2;color:#fff}
+.Tree .fold>div{display:none}
+.Tree .fold>div.head{display:block}
+.Splitter{background-color:#fff;}
+.Splitter div{height:15px;margin-top:-5px;cursor:n-resize}
+.SplitterH div{height:100%;width:15px;margin-left:-5px;cursor:w-resize}
