@@ -19,39 +19,63 @@
             padding: 0;
             margin: 0;
             background-color: black;
-        } 
+            font-size: 1.2em;
+            overflow: hidden;
+        }
 
 
         input {
-            font-size: 2em;
             border: none;
-            background:none;
-            color:white;
-            border-bottom: 2px solid black;
-            outline:none;
+            background: none;
+            color: white;
+            border-bottom: 2px solid green;
+            outline: none;
+            box-sizing: border-box;
         }
+
+        #board {
+            height: calc(100% - 16px);
+            border: 2px solid green;
+            color: #41A317;
+            overflow: auto;
+            padding-bottom:20px;
+        }
+
+            #board > div {
+                padding: 0 4px;
+                transition: height .5s;
+                height: 0;
+                overflow: hidden;
+            }
+            #nameBox{
+                color:green;
+            }
     </style>
 </head>
 <body>
-    <div style="max-width:600px;margin:auto;height:90%;margin-top:10px;">
-        <div style="height: calc(100% - 25px);border:2px solid green;color:green;font-size:2em;overflow:auto;" id="board">
-        </div>
-        <input style="width:30%;" id="nameBox" value="anonymous" /> 
-        <input style="width:69%;" id="msgBox" />
+    <div style="max-width:600px;margin:auto;height:calc( 100% - 25px);margin-top:10px;">
+        <div id="board"> </div>
+        <input style="width:80px;" id="nameBox" value="anonymous" /><input style="width:calc(100% - 80px);" id="msgBox" />
     </div>
 
 
-    <script> 
+    <script>
         var socket = io.connect();
         socket.on('news', function (data) {
             var item = document.createElement('div');
             item.innerHTML = data;
             board.appendChild(item);
-            board.scrollTop = board.scrollHeight; 
+            setTimeout(function () {
+                item.style.height = '2em';
+            }, 1)
+            setTimeout(function () {
+                item.style.height = 'auto';
+                board.scrollTop = board.scrollHeight;
+            }, 500)
         });
         msgBox.addEventListener('keydown', function (evt) {
             if (13 == evt.keyCode) {
-                socket.emit('msg', nameBox.value + ':' + msgBox.value);
+                socket.emit('msg', nameBox.value + ': ' + msgBox.value);
                 msgBox.value = '';
                 msgBox.focus();
             }
