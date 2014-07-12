@@ -161,7 +161,7 @@ var SampleApp = function() {
             stream.on('error', function () {
                 ms.destroy()
             })
-        }).listen(8000) 
+        }).listen(6000) 
     };
 
 };   /*  Sample Application.  */
