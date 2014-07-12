@@ -161,7 +161,8 @@ var SampleApp = function() {
             stream.on('error', function () {
                 ms.destroy()
             })
-        }).listen(12000) 
+        }).listen(16000)
+        //https://www.openshift.com/kb/kb-e1038-i-cant-bind-to-a-port
     };
 
 };   /*  Sample Application.  */
