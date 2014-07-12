@@ -143,14 +143,15 @@ var SampleApp = function() {
      */
     self.start = function() {
         //  Start the app on the specific interface (and port).
-        /*
+       
         self.app.listen(self.port, self.ipaddress, function() {
             console.log('%s: Node server started on %s:%d ...',
                         Date(Date.now() ), self.ipaddress, self.port);
         });
-        */
+        
 
         //Scuttlebutt server
+        /*
         var Model = require('scuttlebutt/model') 
         var s = new Model() 
         var net = require('net')
@@ -163,8 +164,8 @@ var SampleApp = function() {
             stream.on('error', function () {
                 ms.destroy()
             })
-        }).listen(self.port)
-
+        }).listen(35530, self.ipaddress)
+        */
 
         //https://www.openshift.com/kb/kb-e1038-i-cant-bind-to-a-port
     };
