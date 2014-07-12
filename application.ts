@@ -43,37 +43,37 @@ export class App {
 
         for (var r in this.routes) {
             app.get(r, this.routes[r]);
-        } 
-        
+        }
+
         var server = require('http').Server(app);
-        var io = require('socket.io')(server);  
+        var io = require('socket.io')(server);
         var sockets = [];
         function newMsg(data) {
             sockets.forEach(function (s) {
                 s.emit('news', data);
             });
         }
-         
+
         io.on('connection', function (socket) {
             console.log('a user connected');
-            newMsg('a new user joined');
+            newMsg('a new user joined, current users =' + socket.length);
             sockets.push(socket);
 
             socket.on('disconnect', function () {
                 console.log('user disconnected');
                 _.remove(sockets, socket);
             });
-                
+
             socket.on('msg', function (data) {
                 newMsg(data);
             });
         });
 
         var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
-        var port = process.env.OPENSHIFT_NODEJS_PORT || 8080; 
+        var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
         server.listen(port, ipaddress, function () {
             console.log('%s: Node server started on %s:%d ...',
                 new Date(), ipaddress, port);
-        }); 
+        });
     }
 } 

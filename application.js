@@ -57,7 +57,7 @@ var App = (function () {
 
         io.on('connection', function (socket) {
             console.log('a user connected');
-            newMsg('a new user joined');
+            newMsg('a new user joined, current users =' + socket.length);
             sockets.push(socket);
 
             socket.on('disconnect', function () {
