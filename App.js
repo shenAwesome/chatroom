@@ -1,5 +1,5 @@
-﻿///<reference path='misc/node.d.ts' />
-///<reference path='misc/express.d.ts' />
+﻿///<reference path='type/node/node.d.ts' />
+///<reference path='type/express/express.d.ts' />
 var express = require('express');
 
 var App = (function () {
@@ -49,4 +49,4 @@ var App = (function () {
     return App;
 })();
 exports.App = App;
-//# sourceMappingURL=App.js.map
+//# sourceMappingURL=app.js.map

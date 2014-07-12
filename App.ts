@@ -1,19 +1,18 @@
-﻿///<reference path='misc/node.d.ts' />
-///<reference path='misc/express.d.ts' />
+﻿///<reference path='type/node/node.d.ts' />
+///<reference path='type/express/express.d.ts' />
 
 import http = require("http")
 import  fs = require('fs')
 import express = require('express')
 
-export class App {
-    routes = {
+export class App { 
+    routes = { 
         '/': function (req, res) {
             res.setHeader('Content-Type', 'text/html');
             res.send("hello world");
         }  
     }
-    start() {
-
+    start() { 
         var app = express();
         app.use(express.compress());
         app.use(express.static(__dirname + '/public'));
