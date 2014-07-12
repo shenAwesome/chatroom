@@ -1,15 +1,22 @@
 ﻿///<reference path='type/node/node.d.ts' />
 ///<reference path='type/express/express.d.ts' />
+///<reference path='type/socket.io/socket.io.d.ts' />
+///<reference path='type/lodash/lodash.d.ts' />
 
 import http = require("http")
 import  fs = require('fs')
 import express = require('express')
+import socketIO = require('socket.io');
+import _ = require('lodash');
 
 export class App {
     routes = {
         '/': function (req, res) {
             res.setHeader('Content-Type', 'text/html');
-            res.send("hello world");
+            res.send("<h1>hello world</h1>");
+        },
+        'sync': function (req, res) {
+
         }
     }
     start() {
@@ -36,13 +43,36 @@ export class App {
 
         for (var r in this.routes) {
             app.get(r, this.routes[r]);
+        } 
+        
+        var server = require('http').Server(app);
+        var io = require('socket.io')(server);  
+        var sockets = [];
+        function newMsg(data) {
+            sockets.forEach(function (s) {
+                s.emit('news', data);
+            });
         }
+         
+        io.on('connection', function (socket) {
+            console.log('a user connected');
+            sockets.push(socket);
+
+            socket.on('disconnect', function () {
+                console.log('user disconnected');
+                _.remove(sockets, socket);
+            });
+                
+            socket.on('msg', function (data) {
+                newMsg(data);
+            });
+        });
 
         var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
-        var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
-        app.listen(port, ipaddress, function () {
+        var port = process.env.OPENSHIFT_NODEJS_PORT || 8080; 
+        server.listen(port, ipaddress, function () {
             console.log('%s: Node server started on %s:%d ...',
                 new Date(), ipaddress, port);
-        });
+        }); 
     }
 } 

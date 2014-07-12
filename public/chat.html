@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
+    <title></title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            background-color: black;
+        } 
+
+
+        input {
+            font-size: 2em;
+            border: none;
+            background:none;
+            color:white;
+            border-bottom: 2px solid black;
+            outline:none;
+        }
+    </style>
+</head>
+<body>
+    <div style="max-width:600px;margin:auto;height:90%;margin-top:10px;">
+        <div style="height: calc(100% - 25px);border:2px solid green;color:green;font-size:2em;" id="board">
+        </div>
+        <input style="width:30%;" id="nameBox" value="anonymous" /> 
+        <input style="width:69%;" id="msgBox" />
+    </div>
+
+
+    <script> 
+        var socket = io.connect();
+        socket.on('news', function (data) {
+            var item = document.createElement('div');
+            item.innerHTML = data;
+            board.appendChild(item);
+            board.scrollTop = board.scrollHeight; 
+        });
+        msgBox.addEventListener('keydown', function (evt) {
+            if (13 == evt.keyCode) {
+                socket.emit('msg', nameBox.value + ':' + msgBox.value);
+                msgBox.value = '';
+                msgBox.focus();
+            }
+        })
+        msgBox.focus();
+    </script>
+</body>
+</html>
