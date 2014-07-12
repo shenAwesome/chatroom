@@ -7,7 +7,11 @@
     var win = new Window(true);
     win.setSize(400, 300);
     win.title('hellowWorld');
-    win.body.html('helldddo');
+    var video = '<video controls><source src="http://www.w3schools.com/html/movie.mp4" type="video/mp4"></video>';
+    win.body.html(video);
+    
+	
+
 
     var win2 = new Window(true);
     win2.title('another one!');
@@ -97,8 +101,7 @@
     p.element.id = 'editor1';
 	tabs.addTab('tab2', p = new sd.widget.Html('<textarea id="editor2" style="width:100%;height:100%;border:none;"></textarea>')); 
     
-    
-	tabs.addTab('tab3', new Panel().html('tab3'));   
+    tabs.addTab('tab3', new Panel().html('tabs'));   
     
     var dock = new sd.widget.WindowDock();
     desktop.south.add(dock);  
