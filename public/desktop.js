@@ -9,6 +9,8 @@
     win.title('hellowWorld');
     var video = '<video controls style="width:100%;height:100%;"><source src="http://www.w3schools.com/html/movie.mp4" type="video/mp4"></video>';
     win.body.html(video); 
+    win.body.css('backgroundColor','black');
+
 
 
     var win2 = new Window(true);
