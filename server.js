@@ -147,6 +147,21 @@ var SampleApp = function() {
             console.log('%s: Node server started on %s:%d ...',
                         Date(Date.now() ), self.ipaddress, self.port);
         });
+
+        //Scuttlebutt server
+        var Model = require('scuttlebutt/model') 
+        var s = new Model() 
+        var net = require('net')
+        net.createServer(function (stream) {
+            var ms = s.createStream()
+            stream.pipe(ms).pipe(stream)
+            ms.on('error', function () {
+                stream.destroy()
+            })
+            stream.on('error', function () {
+                ms.destroy()
+            })
+        }).listen(8000) 
     };
 
 };   /*  Sample Application.  */
