@@ -1,4 +1,4 @@
 #!/bin/env node
 
-var app = require('./app'); 
+var app = require('./application'); 
 (new app.App()).start();
