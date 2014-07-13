@@ -57,7 +57,8 @@ export class App {
         io.on('connection', function (socket) {
             console.log('a user connected');
             newMsg('a new user joined, current users =' + sockets.length);
-            sockets.push(socket);
+            sockets.push(socket); 
+            socket.emit('news','<h2>welcome, you can change your display name at the left-bottom</h2>') 
 
             socket.on('disconnect', function () {
                 console.log('user disconnected');
