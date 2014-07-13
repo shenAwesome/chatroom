@@ -1,17 +1,16 @@
 ﻿<!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8" /> 
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
     <script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
     <title></title>
 
     <style>
-        * {
+        div, input {
             box-sizing: border-box;
-            -moz-box-sizing:border-box;
+            -moz-box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
@@ -32,8 +31,7 @@
             background: none;
             color: white;
             border-bottom: 2px solid green;
-            outline: none;
-            box-sizing: border-box;
+            outline: none; 
             height: 20px;
         }
 
@@ -84,9 +82,7 @@
         <button onclick="clearBoard()" style="top:10px; right:10px;position:absolute;z-index:1000;">Clear</button>
         <div id="board"> </div>
         <input style="width:80px;" id="nameBox" /><input style="width:calc(100% - 80px);" id="msgBox" />
-    </div>
-    rrr 
-
+    </div>  
     <script>
         var params = {}
         location.search.substr(1).split("&").forEach(function (item) { params[item.split("=")[0]] = item.split("=")[1] })
