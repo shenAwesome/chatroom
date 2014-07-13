@@ -59,7 +59,7 @@ var App = (function () {
             console.log('a user connected');
             newMsg('a new user joined, current users =' + sockets.length);
             sockets.push(socket);
-            socket.emit('news', '<h2>welcome, you can change your display name at the left-bottom</h2>');
+            socket.emit('news', 'Welcome to the chat room, please change your display name at the left-bottom.There are ' + sockets.length + 'users online');
 
             socket.on('disconnect', function () {
                 console.log('user disconnected');
