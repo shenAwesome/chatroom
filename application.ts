@@ -54,7 +54,7 @@ export class App {
             });
         }
 
-        io.on('connection', function (socket) {
+        io.on('connection', function (socket) { 
             console.log('a user connected');
             newMsg('a new user joined, current users =' + sockets.length);
             sockets.push(socket); 
