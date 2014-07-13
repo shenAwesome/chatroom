@@ -58,7 +58,7 @@ export class App {
             console.log('a user connected');
             newMsg('a new user joined, current users =' + sockets.length);
             sockets.push(socket);
-            socket.emit('news', 'Welcome to the chat room, please change your display name at the left-bottom. There are '
+            socket.emit('news', 'Welcome to the chat room. You can change your display name at the left-bottom. There are '
                 + sockets.length + ' users online')
 
             socket.on('disconnect', function () {
