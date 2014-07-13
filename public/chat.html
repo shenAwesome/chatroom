@@ -82,11 +82,15 @@
     <div style="margin:auto;height:calc( 100% - 5px); position:relative;">
         <button onclick="clearBoard()" style="top:10px; right:10px;position:absolute;z-index:1000;">Clear</button>
         <div id="board"> </div>
-        <input style="width:80px;" id="nameBox" value="anonymous" /><input style="width:calc(100% - 80px);" id="msgBox" />
+        <input style="width:80px;" id="nameBox" /><input style="width:calc(100% - 80px);" id="msgBox" />
     </div>
 
 
     <script>
+        var params = {}
+        location.search.substr(1).split("&").forEach(function (item) { params[item.split("=")[0]] = item.split("=")[1] })
+        nameBox.value = params.name || 'anonymous';
+
         var socket = io.connect();
         socket.on('news', function (data) {
             var item = document.createElement('div');
