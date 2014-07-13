@@ -55,10 +55,11 @@ var App = (function () {
             });
         }
 
-        io.on('connection', function (socket) {
+        io.on('connection', function (socket) { 
+            sockets.push(socket);
             console.log('a user connected');
             newMsg('a new user joined, current users =' + sockets.length);
-            sockets.push(socket);
+            
 
             socket.on('disconnect', function () {
                 console.log('user disconnected');
