@@ -4,9 +4,35 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-
-    <script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
-    <title></title>
+	<title></title>
+	
+    <script src="https://cdn.socket.io/socket.io-1.0.6.js"></script> 
+	
+	<script src='libs/tools.js'></script>
+	<style>
+.scrollbar{
+	right:0px;
+	top:0px;
+	height:100% !important;
+	width:10px;
+	background-color:black;
+	position:absolute;
+	z-index:100000;
+	display:none;
+}
+.scrollbar>.knob{
+	background-color:green;
+	height:1px;
+	width:100%;
+	position:absolute;
+	top:0px;
+	left:0px; 
+	border:2px solid black;
+	box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+	</style>
+   
 
     <style>
         div, input {
@@ -44,6 +70,7 @@
             color: #41A317;
             overflow: auto;
             padding-bottom: 2em; 
+			position:relative;
         }
 
             #board > div {
@@ -77,12 +104,13 @@
             color: #41A317;
             cursor: pointer;
             padding: 10px;
-        }
+        } 
+
     </style>
 </head>
 <body style="min-height:100px;">
     <div style="margin:auto;height:100%;padding:5px; position:relative;">
-        <button onclick="clearBoard()" type="button" style="top:10px; right:10px;position:absolute;z-index:1000;">Clear</button>
+        <button onclick="clearBoard()" type="button" style="top:10px; right:20px;position:absolute;z-index:1000;">Clear</button>
         <div id="board"> </div>
 		<div> 
         <input style="width:80px;" id="nameBox" /><input style="width:calc(100% - 80px);" id="msgBox" />
@@ -96,6 +124,7 @@
         var socket = io.connect();
         socket.on('news', function (data) {
             var item = document.createElement('div');
+			item.className='item';
             item.innerHTML = data;
             board.appendChild(item);
             setTimeout(function () {
@@ -104,6 +133,7 @@
             setTimeout(function () {
                 item.style.height = 'auto';
                 board.scrollTop = board.scrollHeight;
+				scroll.update();
             }, 500)
         });
         msgBox.addEventListener('keydown', function (evt) {
@@ -116,9 +146,14 @@
         msgBox.focus();
 
         function clearBoard() {
-            board.innerHTML = '';
+            var items = board.querySelectorAll('.item'); 
+			for(var i=0;i<items.length;i++){
+				board.removeChild(items[i]);
+			}
             msgBox.focus();
         }
+		var scroll = addScroll(board); 
+		
     </script>
 </body>
 </html>

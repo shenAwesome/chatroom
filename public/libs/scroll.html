@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style>
+.scrollbar{
+	right:0px;
+	top:0px;
+	height:100%;
+	width:10px;
+	background-color:silver;
+	position:absolute;
+	z-index:100000;
+}
+.scrollbar>.knob{
+	background-color:gray;
+	height:1px;
+	width:100%;
+	position:absolute;
+	top:0px;
+	left:0px; 
+}
+
+</style>
+<script src='tools.js'></script>
+</head>
+
+<body>
+<div style='width:200px;height:200px;border:1px solid black;position:relative' id='board'>
+AAM is a Geospatial Services company specialising in the collection, analysis, presentation and delivery of geospatial information. We digitise the real world for business and government. From vast expanses of landscape down to individual pieces of machinery, we capture it all. Our depth of resources provides the flexibility to adapt our methods to specific project needs. We then help our clients manipulate it, analyse it, and profit from it.
+
+Our strength lies within our people. Our clients are our lifeblood and our consultants are committed to developing innovative solutions to solve unique business challenges and add value.
+
+Whatever the scope of your geospatial information technology needs, AAM has the expertise and the experience to meet it. To learn more about our company or to connect with your local AAM team please select your nearest region below.
+</div>
+
+<script> 
+
+window.addEventListener('load',function(){
+	addScroll(board);
+}); 
+
+</script> 
+</body>
+
+</html>
