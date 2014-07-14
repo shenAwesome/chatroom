@@ -4,7 +4,7 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 }
 
 function addScroll(div){ 
-    if (isMobile) { //do nothing on mobile
+    if (window.isMobile) { //do nothing on mobile
         div.style.overflow = 'auto';
         return;
     }
