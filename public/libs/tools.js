@@ -1,11 +1,15 @@
 
-function addScroll(div){
+function addScroll(div){ 
+
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 		//do nothing on mobile
 		div.style.overflow = 'auto';
 		alert('a');
 		return;
 	}
+	
+	function debounce(a,b,c){var d;return function(){var e=this,f=arguments;clearTimeout(d),d=setTimeout(function(){d=null,c||a.apply(e,f)},b),c&&!d&&a.apply(e,f)}}
+	
 	div.style.overflow = 'hidden';
 	function createDiv(name,parent){
 		var div = document.createElement('div');
@@ -26,18 +30,17 @@ function addScroll(div){
 	var space = null;
 	div.scrollTop=0; 
 	
-	function update(){ 
-		//scrollbar.style.display = 'none'; 
-		setTimeout(function(){
-			scrollbar.style.display = (div.scrollHeight - div.clientHeight)>0?'block':'none';
-			var step =  div.scrollTop/(div.scrollHeight - div.clientHeight); 
-			var rect = scrollbar.getBoundingClientRect();  
-			var knobHeight = rect.height * div.clientHeight/div.scrollHeight;  
-			space = rect.height-knobHeight;
-			knob.style.top = parseInt((rect.height-knobHeight)*step)+'px'; 
-			knob.style.height = parseInt(knobHeight+1) + 'px';   
-		},1); 
+	function updateNow(){
+		scrollbar.style.display = (div.scrollHeight - div.clientHeight)>0?'block':'none';
+		var step =  div.scrollTop/(div.scrollHeight - div.clientHeight); 
+		var rect = scrollbar.getBoundingClientRect();  
+		var knobHeight = rect.height * div.clientHeight/div.scrollHeight;  
+		space = rect.height-knobHeight;
+		knob.style.top = parseInt((rect.height-knobHeight)*step)+'px'; 
+		knob.style.height = parseInt(knobHeight+1) + 'px';   
 	}
+	
+	var update = debounce(updateNow,250);
 	on(div,'scroll',update);
 	on(window,'resize',update);
 	setTimeout(update,100);
@@ -84,6 +87,7 @@ function addScroll(div){
 		scrollbar.style.top = (top) +'px'; 
 		scrollbar.style.height=div.clientHeight;
 		div.scrollTop = top;
+		updateNow();
 	}
 	
 	on(scrollbar,function(evt){
@@ -92,8 +96,7 @@ function addScroll(div){
 	});
 	
 	setInterval(function(){
-		if (!drag){
-			scrollbar.style.display = 'none'; 
+		if (!drag){ 
 			update();
 		}
 	},1000);
