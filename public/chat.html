@@ -132,7 +132,7 @@
             }, 1)
             setTimeout(function () {
                 item.style.height = 'auto';
-                board.scrollTop = board.scrollHeight;
+                board.scrollTop = board.scrollHeight - board.clientHeight;
 				scroll.update();
             }, 500)
         });

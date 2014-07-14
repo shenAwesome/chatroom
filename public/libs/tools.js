@@ -27,14 +27,16 @@ function addScroll(div){
 	div.scrollTop=0; 
 	
 	function update(){ 
-		scrollbar.style.display = 'none'; 
-		scrollbar.style.display = (div.scrollHeight - div.clientHeight)>0?'block':'none';
-		var step =  div.scrollTop/(div.scrollHeight - div.clientHeight); 
-		var rect = scrollbar.getBoundingClientRect();  
-		var knobHeight = rect.height * div.clientHeight/div.scrollHeight;  
-		space = rect.height-knobHeight;
-		knob.style.top = parseInt((rect.height-knobHeight)*step)+'px'; 
-		knob.style.height = parseInt(knobHeight+1) + 'px';   
+		//scrollbar.style.display = 'none'; 
+		setTimeout(function(){
+			scrollbar.style.display = (div.scrollHeight - div.clientHeight)>0?'block':'none';
+			var step =  div.scrollTop/(div.scrollHeight - div.clientHeight); 
+			var rect = scrollbar.getBoundingClientRect();  
+			var knobHeight = rect.height * div.clientHeight/div.scrollHeight;  
+			space = rect.height-knobHeight;
+			knob.style.top = parseInt((rect.height-knobHeight)*step)+'px'; 
+			knob.style.height = parseInt(knobHeight+1) + 'px';   
+		},1); 
 	}
 	on(div,'scroll',update);
 	on(window,'resize',update);
@@ -80,6 +82,7 @@ function addScroll(div){
 		var top = parseInt((div.scrollHeight - div.clientHeight)*step);  
 		if (top<0) top=0;
 		scrollbar.style.top = (top) +'px'; 
+		scrollbar.style.height=div.clientHeight;
 		div.scrollTop = top;
 	}
 	
