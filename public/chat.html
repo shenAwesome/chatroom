@@ -35,7 +35,7 @@
    
 
     <style>
-        div, input, button {
+        div, input,label, button {
             box-sizing: border-box;
 			-webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
@@ -54,11 +54,10 @@
         }
 
 
-        input {
+        input,label {
             border: none;
             background: none;
-            color: white;
-            border-bottom: 2px solid green;
+            color: white; 
             outline: none; 
             height: 1.2em;
 			display:inline-block;
@@ -67,7 +66,7 @@
         #board {
             height: calc(100% - 1.2em);
             border: 2px solid green;
-            color: #41A317;
+            color: rgb(0,255,0);
             overflow: auto;
             padding-bottom: 2em; 
 			position:relative;
@@ -80,7 +79,7 @@
                 overflow: hidden;
             }
 
-        #nameBox {
+        #nameBox,label {
             color: green;
         }
 
@@ -114,7 +113,7 @@
                 style="top:10px; right:22px;position:absolute;z-index:1000;">Clear</button>
         <div id="board"> </div>
 		<div> 
-        <input style="width:80px;" id="nameBox" /><input style="width:calc(100% - 80px);" id="msgBox" />
+        <input style="width:70px;" id="nameBox" /><label style="width:10px;vertical-align:bottom;padding-top:2px;">&gt;</label><input style="width:calc(100% - 80px);" id="msgBox" />
 		</div>
     </div>  
     <script>
