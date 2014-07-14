@@ -1,11 +1,14 @@
 
-function addScroll(div){ 
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    window.isMobile = true; 
+}
 
-	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-		//do nothing on mobile
-		div.style.overflow = 'auto'; 
-		return;
-	}
+function addScroll(div){ 
+    if (isMobile) { //do nothing on mobile
+        div.style.overflow = 'auto';
+        return;
+    }
+	
 	
 	function debounce(a,b,c){var d;return function(){var e=this,f=arguments;clearTimeout(d),d=setTimeout(function(){d=null,c||a.apply(e,f)},b),c&&!d&&a.apply(e,f)}}
 	

@@ -1,4 +1,4 @@
-
+﻿
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -75,7 +75,7 @@
 
             #board > div {
                 padding: 0 4px;
-                transition: height .5s;
+                transition: height .2s;
                 height: 0;
                 overflow: hidden;
             }
@@ -110,7 +110,8 @@
 </head>
 <body style="min-height:100px;">
     <div style="margin:auto;height:100%;padding:5px; position:relative;">
-        <button onclick="clearBoard()" type="button" style="top:10px; right:22px;position:absolute;z-index:1000;">Clear</button>
+        <button onclick="clearBoard()" type="button" 
+                style="top:10px; right:22px;position:absolute;z-index:1000;">Clear</button>
         <div id="board"> </div>
 		<div> 
         <input style="width:80px;" id="nameBox" /><input style="width:calc(100% - 80px);" id="msgBox" />
@@ -132,15 +133,21 @@
             }, 1)
             setTimeout(function () {
                 item.style.height = 'auto';
-                board.scrollTop = board.scrollHeight - board.clientHeight;
-				scroll.update();
-            }, 500)
+                board.scrollTop = board.scrollHeight - board.clientHeight; 
+            }, 200)
+            setTimeout(function () {
+                scroll.update();
+            }, 400) 
+            
         });
         msgBox.addEventListener('keydown', function (evt) {
             if (13 == evt.keyCode) {
                 socket.emit('msg', nameBox.value + ': ' + msgBox.value);
                 msgBox.value = '';
                 msgBox.focus();
+                if (window.isMobile) {
+                    document.querySelector('button').focus();
+                }
             }
         })
         msgBox.focus();
