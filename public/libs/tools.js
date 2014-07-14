@@ -3,8 +3,7 @@ function addScroll(div){
 
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 		//do nothing on mobile
-		div.style.overflow = 'auto';
-		alert('a');
+		div.style.overflow = 'auto'; 
 		return;
 	}
 	
