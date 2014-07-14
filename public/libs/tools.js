@@ -91,6 +91,8 @@ function addScroll(div){
 		setStep((evt.clientY-rect.top-10)/rect.height); 
 	});
 	
+	setInterval(update,1000);
+	
 	return{
 		update:update
 	}
