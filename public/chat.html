@@ -79,8 +79,13 @@
                 overflow: hidden;
             }
 
-        #nameBox,label {
+        div.input>* {
             color: green;
+            font-size:14px;
+            display:inline-block;
+            border:none !important;
+            padding:0;
+            margin:0;
         }
 
         /* Let's get this party started */
@@ -112,8 +117,8 @@
         <button onclick="clearBoard()" type="button" 
                 style="top:10px; right:22px;position:absolute;z-index:1000;">Clear</button>
         <div id="board"> </div>
-		<div> 
-        <input style="width:70px;" id="nameBox" /><label style="width:10px;vertical-align:bottom;padding-top:2px;">&gt;</label><input style="width:calc(100% - 80px);" id="msgBox" />
+		<div class="input"> 
+            <input style="width:80px;" id="nameBox" /><label style="width:20px;">&gt;</label><input style="width:calc(100% - 100px);" id="msgBox" />
 		</div>
     </div>  
     <script>
