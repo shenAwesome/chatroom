@@ -134,10 +134,10 @@
             board.appendChild(item);
             setTimeout(function () {
                 item.style.height = '2em';
+				scroll.hide();
             }, 1)
             setTimeout(function () {
-                item.style.height = 'auto';
-				scroll.hide();
+                item.style.height = 'auto'; 
                 board.scrollTop = board.scrollHeight - board.clientHeight; 
             }, 200)
             setTimeout(function () {
