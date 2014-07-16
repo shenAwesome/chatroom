@@ -24,16 +24,16 @@
             height: 100%;
             padding: 0;
             margin: 0;
-            background-color: black;
+            background-color: white;
             font-size: 100%;
             overflow: hidden;
+            color: green;
         }
 
 
         input,label {
             border: none;
-            background: none;
-            color: white; 
+            background: none; 
             outline: none; 
             height: 1.2em;
 			display:inline-block;
@@ -41,11 +41,11 @@
 
         #board {
             height: calc(100% - 1.2em);
-            border: 2px solid green;
-            color: rgb(0,255,0);
+            border: 2px solid green; 
             overflow: auto;
             padding-bottom: 2em; 
 			position:relative;
+            border-radius:15px;
         }
 
             #board > div {
@@ -78,11 +78,13 @@
             }
 
         button {
-            background: black;
+            background-color:white;
             border: 1px solid green;
             color: #41A317;
             cursor: pointer; 
-			padding:2px 4px;
+			padding:10px;
+            border-radius:20px;
+            box-shadow:2px 2px 5px #888888;
         } 
 
     </style>
