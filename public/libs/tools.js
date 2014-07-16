@@ -42,6 +42,10 @@ function addScroll(div){
 		knob.style.height = parseInt(knobHeight+1) + 'px';   
 	}
 	
+	function hide(){
+		scrollbar.style.display = 'none';
+	}
+	
 	var update = debounce(updateNow,250);
 	on(div,'scroll',update);
 	on(window,'resize',update);
@@ -104,6 +108,7 @@ function addScroll(div){
 	},1000);
 	
 	return{
+		hide:hide,
 		update:update
 	}
 }  

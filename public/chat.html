@@ -49,7 +49,7 @@
             padding: 0;
             margin: 0;
             background-color: black;
-            font-size: 100%,
+            font-size: 100%;
             overflow: hidden;
         }
 
@@ -137,12 +137,12 @@
             }, 1)
             setTimeout(function () {
                 item.style.height = 'auto';
+				scroll.hide();
                 board.scrollTop = board.scrollHeight - board.clientHeight; 
             }, 200)
             setTimeout(function () {
                 scroll.update();
-            }, 400) 
-            
+            }, 400)  
         });
         msgBox.addEventListener('keydown', function (evt) {
             if (13 == evt.keyCode) {
