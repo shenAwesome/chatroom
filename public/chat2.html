@@ -91,11 +91,8 @@
 		function MyCtrl($scope){
 		    $scope.items = []; 
 			var socket = io.connect();
-			socket.on('news', function (data) {
-				var item = document.createElement('div');
-				item.className='item';
-				item.innerHTML = data;
-				$scope.items.push(item); 
+			socket.on('news', function (data) { 
+				$scope.items.push(data);
 			});
 
 			$scope.keypress = function (ev) {
@@ -127,7 +124,7 @@
             Clear
         </button>
         <div id="board">
-            <div ng-repeat="item in items">{{item}} </div>
+            <div ng-repeat="item in items" class="item">{{item}} </div>
         </div>
         <div class="input">
             <input style="width:80px;" id="nameBox" ng-model="nameBox" /><label style="width:20px;">&gt;</label><input style="width:calc(100% - 100px);" id="msgBox" ng-model="msgBox" ng-keypress="keypress($event)" />
