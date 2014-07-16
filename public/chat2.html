@@ -92,7 +92,8 @@
 		    $scope.items = []; 
 			var socket = io.connect();
 			socket.on('news', function (data) { 
-				$scope.items.push(data);
+			    $scope.items.push(data);
+			    $scope.$apply();
 			});
 
 			$scope.keypress = function (ev) {
